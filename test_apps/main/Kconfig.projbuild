@@ -12,4 +12,10 @@ menu "Example Configuration"
         help
             GPIO number for I2C Master data line.
 
+    config BME68X_SDO_PULLED_DOWN
+        bool "BME68X SDO Pin Pulled Down to GND"
+            default n
+        help
+            Enable if SDO pin is pulled down, disable if SDO pin is pulled up. This will decide the i2c address.
+
 endmenu

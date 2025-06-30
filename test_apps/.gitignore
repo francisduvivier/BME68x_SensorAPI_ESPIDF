@@ -1,0 +1,4 @@
+sdkconfig.old
+sdkconfig
+managed_components
+cmake-build-debug

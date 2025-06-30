@@ -1,0 +1,47 @@
+dependencies:
+  BME68x_SensorAPI_ESPIDF:
+    dependencies:
+    - name: espressif/i2c_bus
+      version: 1.*
+    - name: espressif/cmake_utilities
+      version: 0.*
+    - name: idf
+      version: '>=4.4'
+    source:
+      path: /Users/fduvivier/gitProjects/PSNL/WHY2025/DEPENDENCIES/BME68x_SensorAPI_ESPIDF
+      type: local
+    version: 0.0.1
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 0.5.3
+  espressif/i2c_bus:
+    component_hash: e3dddc78baa172f4768f3973fbecbd6c6c1f2cb23cc6a36cf3132758be092482
+    dependencies:
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: 0.*
+    - name: idf
+      require: private
+      version: '>=4.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.4.0
+  idf:
+    source:
+      type: idf
+    version: 5.5.0
+direct_dependencies:
+- BME68x_SensorAPI_ESPIDF
+- idf
+manifest_hash: 0bba98f599d6e4c22289186541501f0b7e5f642adb8c1d9728bf5beec3146ebd
+target: esp32p4
+version: 2.0.0

@@ -12,6 +12,8 @@ esp_err_t bme68x_sensor_create(const bme68x_i2c_config_t *i2c_conf, bme68x_handl
 
     rslt = bme68x_interface_init(bme, BME68X_I2C_INTF, i2c_conf->i2c_addr, i2c_conf->i2c_handle);
     bme68x_check_rslt("bme68x_sensor_create", rslt);
+    ESP_LOGI(TAG, "bme68x_check_rslt done");
+
     ESP_GOTO_ON_FALSE((BME68X_OK == rslt), ESP_ERR_INVALID_STATE, err, TAG, "bme68x_interface_init failed");
 
     // Initialize BME68x

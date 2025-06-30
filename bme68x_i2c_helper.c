@@ -158,6 +158,6 @@ int8_t bme68x_interface_init(struct bme68x_dev *bme, uint8_t intf, uint8_t dev_a
 
 esp_err_t bme68x_i2c_deinit(void)
 {
-    ESP_LOGI("BMI2", "bme68x_i2c_deinit");
+    ESP_LOGI("BME68X", "bme68x_i2c_deinit");
     return i2c_bus_device_delete(&intf_conf);
 }

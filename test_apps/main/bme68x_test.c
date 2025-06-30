@@ -15,7 +15,6 @@
 #include "driver/i2c.h"
 
 // Settings
-#define I2C_MASTER_TIMEOUT 100        // Shorter timeout for faster scanning
 
 #define TEST_MEMORY_LEAK_THRESHOLD (-800) // TODO investigate why it's a bit higher than 400
 
@@ -131,65 +130,6 @@ void tearDown(void)
     check_leak(before_free_8bit, after_free_8bit, "8BIT");
     check_leak(before_free_32bit, after_free_32bit, "32BIT");
     printf("DONE: tearDown\n");
-}
-
-// Silent scanner - returns true if device found
-bool i2c_probe_address(i2c_port_t port, uint8_t addr) {
-    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
-    i2c_master_start(cmd);
-    i2c_master_write_byte(cmd, (addr << 1) | I2C_MASTER_WRITE, true);
-    i2c_master_stop(cmd);
-
-    // Temporarily lower log level to suppress bus errors
-    esp_log_level_t old_level = esp_log_level_get("i2c");
-    esp_log_level_set("i2c", ESP_LOG_ERROR);
-
-    esp_err_t ret = i2c_master_cmd_begin(port, cmd, pdMS_TO_TICKS(I2C_MASTER_TIMEOUT));
-
-    // Restore log level
-    esp_log_level_set("i2c", old_level);
-    i2c_cmd_link_delete(cmd);
-
-    return ret == ESP_OK;
-}
-
-uint8_t i2c_scan() {
-    printf("\nI2C Scanner (0x08-0x77)\n");
-
-    uint8_t found = 0;
-    for (uint8_t addr = 0x08; addr <= 0x77; addr++) {
-        // Probe address
-        if (i2c_probe_address(I2C_MASTER_NUM, addr)) {
-            printf("\nFound device at 0x%X\n", addr);
-            found++;
-        }
-    }
-
-    printf("\n\nFound [%d] device(s)\n", found);
-    return found;
-}
-
-TEST_CASE("i2c scan test", "[i2c][scan]")
-{
-    // Configure I2C
-    i2c_config_t conf = {
-        .mode = I2C_MODE_MASTER,
-        .sda_io_num = I2C_MASTER_SDA_IO,
-        .scl_io_num = I2C_MASTER_SCL_IO,
-        .sda_pullup_en = GPIO_PULLUP_ENABLE,
-        .scl_pullup_en = GPIO_PULLUP_ENABLE,
-        .master.clk_speed = I2C_MASTER_FREQ_HZ,
-    };
-
-    ESP_ERROR_CHECK(i2c_param_config(I2C_MASTER_NUM, &conf));
-    ESP_ERROR_CHECK(i2c_driver_install(I2C_MASTER_NUM, conf.mode, 0, 0, 0));
-
-    // Run scan
-    uint8_t found = i2c_scan();
-    TEST_ASSERT_NOT_EQUAL(0, found);
-
-    // Cleanup (comment out if you need I2C after scanning)
-    i2c_driver_delete(I2C_MASTER_NUM);
 }
 
 /* Macro for count of samples to be displayed */

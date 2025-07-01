@@ -2,7 +2,8 @@
 This code is an adaptation of https://github.com/boschsensortec/BME68x_SensorAPI for ESP-IDF.
 Only works with i2c bus, not SPI.
 
-## Getting Started
+## Getting Started with this IDF component
+This component is published on the [ESP-IDF Component Registry](https://components.espressif.com/components/francisduvivier/bme68x_sensorapi_espidf).
 
 Check the [test_apps](./test_apps) directory for example code on how to use the BME68X Sensor API with ESP-IDF.
 

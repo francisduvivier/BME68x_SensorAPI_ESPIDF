@@ -10,7 +10,7 @@ dependencies:
     source:
       path: /Users/fduvivier/gitProjects/PSNL/WHY2025/DEPENDENCIES/BME68x_SensorAPI_ESPIDF
       type: local
-    version: 0.0.1
+    version: 0.0.2
   espressif/cmake_utilities:
     component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
     dependencies:
@@ -42,6 +42,6 @@ dependencies:
 direct_dependencies:
 - BME68x_SensorAPI_ESPIDF
 - idf
-manifest_hash: 0bba98f599d6e4c22289186541501f0b7e5f642adb8c1d9728bf5beec3146ebd
+manifest_hash: c1d26ed05e5a6f321e183196feb25ab8f4d523119051021bf40daf578b818aa1
 target: esp32p4
 version: 2.0.0

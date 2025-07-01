@@ -9,5 +9,7 @@ description: BME68x_SensorAPI library from Bosch Sensortec, adapted for ESP-IDF.
 url: https://github.com/francisduvivier/BME68x_SensorAPI_ESPIDF
 repository: "https://github.com/francisduvivier/BME68x_SensorAPI_ESPIDF.git"
 documentation: "https://github.com/boschsensortec/BME68x_SensorAPI/"
-issues: "https://github.com/francisduvivier/BME68x_SensorAPI_ESPIDF/issues" # URL of the issue tracker
+issues: "https://github.com/francisduvivier/BME68x_SensorAPI_ESPIDF/issues"
 license: "MIT"
+files:
+  use_gitignore: true

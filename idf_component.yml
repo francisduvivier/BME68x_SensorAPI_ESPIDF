@@ -1,4 +1,4 @@
-version: "0.0.2"
+version: "0.0.3"
 dependencies:
   espressif/i2c_bus: "1.*"
   cmake_utilities:

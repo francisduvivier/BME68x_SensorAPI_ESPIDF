@@ -1,5 +1,8 @@
+.idea
+.git
 dist
-test_apps/sdkconfig.old
-test_apps/sdkconfig
-test_apps/managed_components
-test_apps/cmake-build-debug
+build
+cmake-build-debug
+examples/*/sdkconfig.old
+examples/*/sdkconfig
+examples/*/managed_components

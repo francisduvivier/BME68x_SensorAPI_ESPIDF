@@ -1,5 +1,4 @@
 .idea
-.git
 dist
 build
 cmake-build-debug
